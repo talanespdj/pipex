@@ -6,37 +6,35 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:26:38 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/23 21:24:56 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/23 22:33:21 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-int	pipex(char **argv)
+int	pipex(struct pip *ppx, char **argv, char **env)
 {
-	int	fd[2];
-	int	pid1;
+	char	**str;
+	int		i;
 
-	if (pipe(fd) == -1)
-		return(1);
-	pid1 = fork();
-	if (pid1 < 0)
-		return (2);
-	
-
+	(void)argv;
+	(void)ppx;
+	i = 0;
+	str = fpath(env);
+	while (str[i])
+	{
+		printf("%s\n", str[i]);
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (0);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
 	struct pip	ppx;
 
-	while (*envp != NULL){ printf("%s\n", *envp); envp++; }
-	exit(EXIT_SUCCESS);
-}
-
-
 	if (argc == 5)
-	{
-		pipex(argv);
-	}
+		pipex(&ppx, argv, envp);
 	return (0);
 }

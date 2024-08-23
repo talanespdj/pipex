@@ -6,11 +6,10 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:44:55 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/23 21:45:21 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/23 22:10:10 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
-
 
 static	int	hw_much_words(struct spt x)
 {
@@ -121,4 +120,3 @@ char	**split(char const *str, char c)
 	}
 	return (x.split);
 }
-

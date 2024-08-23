@@ -3,7 +3,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -O3 -g3
 
 SRC = pipex.c \
-	parse.c \
+	split.c \
+	utils.c \
 
 OBJS = $(SRC:.c=.o)
 
@@ -14,7 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	echo "\033[1mpipex est prêt ✅\033[0m"
+	echo "\033[1m\n\t\t\tpipex ready ✅\n\033[0m"
 
 clean:
 	rm -rf $(OBJS)

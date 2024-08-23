@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/23 21:45:46 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/23 22:14:44 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ typedef struct pip
 
 typedef struct var
 {
-	char	*cmd_1;
-	char	*cmd_2;
-	char	*file_1;
-	char	*file_2;
-}		t_data;
+	char		*cmd_1;
+	char		*cmd_2;
+	char		*file_1;
+	char		*file_2;
+}			t_data;
 
 typedef struct spt
 {
@@ -46,8 +46,11 @@ typedef struct spt
 	int			i;
 }			t_split;
 
-int			pipex(char **argv);
+int				pipex(struct pip *ppx, char **argv, char **env);
 
-int			wefork(void);
+char			**split(char const *str, char c);
+
+char			**fpath(char **env);
+void			wegotasplituation(struct spt x);
 
 #endif
