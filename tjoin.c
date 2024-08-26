@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   tjoin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 15:26:38 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/27 00:22:25 by tespandj         ###   ########.fr       */
+/*   Created: 2024/08/26 23:28:30 by tespandj          #+#    #+#             */
+/*   Updated: 2024/08/26 23:40:01 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-int	pipex(struct pip *ppx, char **argv, char **env)
+char	*tjoin(char *str, char *add)
 {
-	char	**str;
+	char	*tzy;
 	int		i;
+	int		r;
+	int		t;
 
-	(void)ppx;
 	i = 0;
-	str = fpath(env);
-	while (str[i])
+	t = 0;
+	r = tstrlen(add) + tstrlen(str);
+	tzy = malloc(sizeof(char) * (tstrlen(add) + tstrlen(str) + 1));
+	if (!tzy)
+		return (NULL);
+	while (str[i] != '\0')
 	{
-		execve(tjoin(str[i], argv[2]), prep_arg(argv[2]), env);
-		free(str[i]);
+		tzy[i] = str[i];
 		i++;
 	}
-	free(str);
-	return (0);
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	struct pip	ppx;
-
-	if (argc == 5)
-		pipex(&ppx, argv, envp);
-	return (0);
+	while (add[t] != '\0')
+	{
+		tzy[i + t] = add[t];
+		t++;
+	}
+	tzy[i + t] = '\0';
+	return(tzy);
 }

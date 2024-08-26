@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:44:55 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/23 22:10:10 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/26 23:25:17 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -65,11 +65,15 @@ struct	spt	space_alloc(struct spt x)
 {
 	x.indic = 0;
 	x = len_word(x, x.op);
-	x.split[x.op] = (char *)malloc(sizeof(char) * x.len + 1);
+	x.split[x.op] = (char *)malloc(sizeof(char) * x.len + 2);
+	//////je change et mets x.len + 2 pour pouvoir ajouter le / avant le '\0'
 	if (!x.split[x.op])
 		x.indic = 42;
 	else
-		x.split[x.op][x.len] = '\0';
+	{
+		x.split[x.op][x.len] = '/';
+		x.split[x.op][x.len + 1] = '\0';
+	}
 	return (x);
 }
 
