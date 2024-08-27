@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/26 23:39:17 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:31:01 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ int				pipex(struct pip *ppx, char **argv, char **env);
 char			**split(char const *str, char c);
 
 int			tstrlen(char *str);
-char			**fpath(char **env);
+char			*ft_strdup(char *src);
+char			*fpath(char **env, char *cmd);
+void			fsplit(char **str);
 char			**prep_arg(char *str);
 void			wegotasplituation(struct spt x);
 
 char			*tjoin(char *str, char *add);
+
+int	tncmp(const char *s1, const char *s2, size_t n);
 
 #endif

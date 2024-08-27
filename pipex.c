@@ -6,26 +6,29 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:26:38 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/27 00:22:25 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:00:03 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
 int	pipex(struct pip *ppx, char **argv, char **env)
 {
-	char	**str;
-	int		i;
+	char	*path;
+	char	**ex_arg;
 
 	(void)ppx;
-	i = 0;
-	str = fpath(env);
-	while (str[i])
-	{
-		execve(tjoin(str[i], argv[2]), prep_arg(argv[2]), env);
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	if (!access(argv[2], X_OK))
+		path = fpath(env, argv[2]);
+	else
+		path = ft_strdup(argv[2]);
+	if (path == NULL)
+		return (0);
+	ex_arg = prep_arg(argv[2]);
+	execve(path, ex_arg, env);
+	free(ex_arg[0]);
+	free(ex_arg[1]);
+	free(ex_arg);
+	free(path);
 	return (0);
 }
 

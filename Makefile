@@ -5,7 +5,6 @@ CFLAGS = -Wall -Werror -Wextra -O3 -g3
 SRC = pipex.c \
 	split.c \
 	utils.c \
-	tjoin.c \
 
 OBJS = $(SRC:.c=.o)
 
