@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/27 14:31:01 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:54:35 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct pip
+typedef struct ppx
 {
 	struct var	*data;
-}			t_pip;
+	char		*path;
+}			t_ppx;
 
 typedef struct var
 {
-	char		*cmd_1;
-	char		*cmd_2;
-	char		*file_1;
-	char		*file_2;
+	char		*cmd1;
+	char		*cmd2;
+	char		*in;
+	char		*out;
 }			t_data;
 
 typedef struct spt
@@ -46,11 +47,15 @@ typedef struct spt
 	int			i;
 }			t_split;
 
-int				pipex(struct pip *ppx, char **argv, char **env);
+int				pipex(struct ppx *ppx, char **argv, char **env);
+
+void			everinit(struct ppx *ppx, char **argv, char **env);
+
+void			cute(struct ppx *ppx);
 
 char			**split(char const *str, char c);
 
-int			tstrlen(char *str);
+int				tstrlen(char *str);
 char			*ft_strdup(char *src);
 char			*fpath(char **env, char *cmd);
 void			fsplit(char **str);
@@ -58,7 +63,5 @@ char			**prep_arg(char *str);
 void			wegotasplituation(struct spt x);
 
 char			*tjoin(char *str, char *add);
-
-int	tncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 15:26:38 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/29 18:54:59 by tespandj         ###   ########.fr       */
+/*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
+/*   Updated: 2024/08/29 18:56:36 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-int	pipex(struct ppx *ppx, char **argv, char **env)
+void	everinit(struct ppx *ppx, char **argv, char **env)
 {
-	char	*path;
-
-	(void)ppx;
-	everinit(ppx, argv, env);
-	ppx->path = fpath(env, argv[2]);
-	if (ppx->path == NULL)
-		return (0);
-	cute(ppx);
-	execve(path, prep_arg(argv[2]), env);
-	return (0);
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	struct ppx	ppx;
-
-	if (argc == 5)
-		pipex(&ppx, argv, envp);
-	return (0);
+	ppx->data = (t_data *)malloc(sizeof(t_data));
+	if (!ppx->data)
+		exit(EXIT_FAILURE);
+	ppx->data->in = argv[1];
+	ppx->data->cmd1 = argv[2];
+	ppx->data->cmd2 = argv[3];
+	ppx->data->out = argv[4];
+	(void)env;
 }

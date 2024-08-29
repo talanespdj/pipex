@@ -3,8 +3,10 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -O3 -g3
 
 SRC = pipex.c \
+	exec.c \
 	split.c \
 	utils.c \
+	process.c \
 
 OBJS = $(SRC:.c=.o)
 

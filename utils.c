@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/27 14:55:46 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:50:01 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -48,13 +48,13 @@ char	*fpath(char **env, char *cmd)
 
 	i = 0;
 	//gerer env -i
-	if (access(cmd, X_OK))
-		return (cmd);
+//	if (access(cmd, X_OK))
+//		return (cmd);
 	while (env[i])
 	{
 		if (env[i][4] && env[i][0] == 'P' && env[i][1] == 'A'
 			&& env[i][2] == 'T' && env[i][3] == 'H' && env[i][4] == '=')
-			break;
+			break ;
 		i++;
 	}
 	str = split(env[i], ':');
@@ -66,7 +66,7 @@ char	*fpath(char **env, char *cmd)
 	{
 		fd = access(str[i], X_OK);
 		if (fd != -1)
-			break;
+			break ;
 	}
 	path = ft_strdup(str[i]);
 	fsplit(str);
@@ -130,7 +130,7 @@ char	*tjoin(char *str, char *add)
 	}
 	tzy[i + t] = '\0';
 	free(str);
-	return(tzy);
+	return (tzy);
 }
 
 void	wegotasplituation(struct spt x)
@@ -145,6 +145,3 @@ void	wegotasplituation(struct spt x)
 	}
 	free(x.split);
 }
-
-
-
