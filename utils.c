@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/29 18:50:01 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/31 22:45:24 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -131,17 +131,4 @@ char	*tjoin(char *str, char *add)
 	tzy[i + t] = '\0';
 	free(str);
 	return (tzy);
-}
-
-void	wegotasplituation(struct spt x)
-{
-	int	i;
-
-	i = 0;
-	while (x.split[i] && i <= x.op)
-	{
-		free(x.split[i]);
-		i++;
-	}
-	free(x.split);
 }

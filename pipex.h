@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/29 18:54:35 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/08/31 22:48:37 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ char			*ft_strdup(char *src);
 char			*fpath(char **env, char *cmd);
 void			fsplit(char **str);
 char			**prep_arg(char *str);
-void			wegotasplituation(struct spt x);
 
 char			*tjoin(char *str, char *add);
 
+void			wgas(char *str);
+void			wegotasplituation(struct spt x);
 #endif
