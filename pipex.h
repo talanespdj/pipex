@@ -63,6 +63,9 @@ char			**prep_arg(char *str);
 
 char			*tjoin(char *str, char *add);
 
+char			*first_path(char *str);
+
 void			wgas(char *str);
 void			wegotasplituation(struct spt x);
+
 #endif

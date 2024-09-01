@@ -29,3 +29,24 @@ void	wegotasplituation(struct spt x)
 	}
 	free(x.split);
 }
+
+char	*first_path(char *str)
+{
+	char	*path;
+	int	i;
+	int	r;
+
+	r = 0;
+	i = 5;
+	path = malloc(sizeof(char) * tstrlen(str) - 4);
+	if (!path)
+		return (NULL);
+	while (str[i])
+	{
+		path[r] = str[i];
+		i++;
+		r++;
+	}
+	path[r] = '\0';
+	return (path);
+}

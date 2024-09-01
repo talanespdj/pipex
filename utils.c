@@ -109,12 +109,10 @@ char	*tjoin(char *str, char *add)
 {
 	char	*tzy;
 	int		i;
-	int		r;
 	int		t;
 
 	i = 0;
 	t = 0;
-	r = tstrlen(add) + tstrlen(str);
 	tzy = malloc(sizeof(char) * (tstrlen(add) + tstrlen(str) + 1));
 	if (!tzy)
 		return (NULL);
