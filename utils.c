@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 12:59:36 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:43:25 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -43,13 +43,11 @@ char	*fpath(char **env, char *cmd)
 {
 	char	**str;
 	char	*path;
-	int		fd;
 	int		i;
 
 	i = 0;
-	//gerer env -i
-//	if (access(cmd, X_OK))
-//		return (cmd);
+	path = NULL;
+	(void)cmd;
 	while (env[i])
 	{
 		if (env[i][4] && env[i][0] == 'P' && env[i][1] == 'A'
@@ -57,55 +55,20 @@ char	*fpath(char **env, char *cmd)
 			break ;
 		i++;
 	}
-	str = split(env[i], ':');
+	str = split(*env + 5, ':');
 	i = -1;
 	while (str[++i])
 		str[i] = tjoin(str[i], cmd);
-	str[0] = first_path(str[0]);
 	i = -1;
 	while (str[++i])
 	{
-		fd = access(str[i], X_OK);
-		if (fd != -1)
+		if (access(str[i], F_OK) && access(str[i], X_OK))
 			break ;
 	}
-	path = ft_strdup(str[i]);
+	if (str[i])
+		path = ft_strdup(str[i]);
 	fsplit(str);
 	return (path);
-}
-
-void	fsplit(char **str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str);
-}
-
-
-
-//////////////	gerer les arguments de commandes avec split
-//////////////	ls -l
-char	**prep_arg(char *str)
-{
-	char	**arg;
-	int		i;
-
-	i = tstrlen(str) + 1;
-
-	arg = malloc(sizeof(char *) * 2);
-	if (!arg)
-		return (NULL);
-	arg[0] = malloc(sizeof(char) * i);
-	if (!arg[0])
-		return (NULL);
-	arg[0][--i] = '\0';
-	arg[1] = NULL;
-	while (--i >= 0)
-		arg[0][i] = str[i];
-	return (arg);
 }
 
 char	*tjoin(char *str, char *add)

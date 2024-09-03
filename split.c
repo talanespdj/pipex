@@ -32,7 +32,7 @@ static	int	hw_much_words(struct spt x)
 	return (d);
 }
 
-struct	spt	len_word(struct spt x, int op)
+static struct	spt	len_word(struct spt x, int op)
 {
 	int	i;
 	int	d;
@@ -61,7 +61,7 @@ struct	spt	len_word(struct spt x, int op)
 	return (x);
 }
 
-struct	spt	space_alloc(struct spt x)
+static struct	spt	space_alloc(struct spt x)
 {
 	x.indic = 0;
 	x = len_word(x, x.op);
@@ -73,7 +73,7 @@ struct	spt	space_alloc(struct spt x)
 	return (x);
 }
 
-struct	spt	fill_split(struct spt x)
+static struct	spt	fill_split(struct spt x)
 {
 	int	tzy;
 	int	tmp;

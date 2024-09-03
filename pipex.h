@@ -6,10 +6,9 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 13:04:42 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:25:30 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -23,18 +22,14 @@
 
 typedef struct ppx
 {
-	struct var	*data;
+	int			*fd;
 	char		**env;
 	char		*path;
-}			t_ppx;
-
-typedef struct var
-{
 	char		**cmd1;
 	char		**cmd2;
 	char		*in;
 	char		*out;
-}			t_data;
+}			t_ppx;
 
 typedef struct spt
 {
@@ -51,22 +46,16 @@ typedef struct spt
 int				pipex(struct ppx *ppx, char **argv, char **env);
 
 void			everinit(struct ppx *ppx, char **argv, char **env);
-
-void			cute(struct ppx *ppx);
-
-char			**split(char const *str, char c);
+void			wgas(char *str);
+void			fsplit(char **str);
+void			freeve(struct ppx *ppx);
+void			wegotasplituation(struct spt x);
 
 int				tstrlen(char *str);
 char			*ft_strdup(char *src);
 char			*fpath(char **env, char *cmd);
-void			fsplit(char **str);
-char			**prep_arg(char *str);
-
 char			*tjoin(char *str, char *add);
 
-char			*first_path(char *str);
-
-void			wgas(char *str);
-void			wegotasplituation(struct spt x);
+char			**split(char const *str, char c);
 
 #endif

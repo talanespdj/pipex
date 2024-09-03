@@ -1,0 +1,7 @@
+https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
+
+[ ] = chemin absolu donne -> return cmd
+
+	        if (access(cmd, X_OK))
+        		return (cmd);
+

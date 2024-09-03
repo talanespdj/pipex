@@ -6,21 +6,70 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 13:07:09 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 22:27:17 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
 void	everinit(struct ppx *ppx, char **argv, char **env)
 {
-	ppx->data = (t_data *)malloc(sizeof(t_data));
-	if (!ppx->data)
-		exit(EXIT_FAILURE);
+	int	fd;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd <= 0)
+		wgas("infile not valid / fd <= 0");
+	close(fd);
+	fd = open(argv[4], O_RDONLY);
+	if (fd <= 0)
+		wgas("outfile not valid / fd <= 0");
+	close(fd);
+	ppx->in = argv[1];
+	ppx->cmd1 = split(argv[2], ' ');
+	ppx->cmd2 = split(argv[3], ' ');
+	ppx->out = argv[4];
 	ppx->env = env;
-	ppx->data->in = argv[1];
-	ppx->data->cmd1 = split(argv[2], ' ');
-	ppx->data->cmd2 = split(argv[3], ' ');
-	printf("%s\n", ppx->data->cmd1[0]);
-	printf("%s\n", ppx->data->cmd2[0]);
-	ppx->data->out = argv[4];
+	ppx->fd = (int *)malloc(sizeof(int) * 2);
+	if (!ppx->fd)
+	{
+		fsplit(ppx->cmd1);
+		fsplit(ppx->cmd2);
+		wgas("process.c // ppx->fd fail\n");
+	}
+}
+
+void	wegotasplituation(struct spt x)
+{
+	int	i;
+
+	i = 0;
+	while (x.split[i] && i <= x.op)
+	{
+		free(x.split[i]);
+		i++;
+	}
+	free(x.split);
+}
+
+void	freeve(struct ppx *ppx)
+{
+	fsplit(ppx->cmd1);
+	fsplit(ppx->cmd2);
+	free(ppx->fd);
+	wgas("");
+}
+
+void	fsplit(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
+
+void	wgas(char *str)
+{
+	perror(str);
+	exit(1);
 }
