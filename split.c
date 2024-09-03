@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:44:55 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/29 18:48:48 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:08:23 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -65,14 +65,11 @@ struct	spt	space_alloc(struct spt x)
 {
 	x.indic = 0;
 	x = len_word(x, x.op);
-	x.split[x.op] = (char *)malloc(sizeof(char) * x.len + 2);
+	x.split[x.op] = (char *)malloc(sizeof(char) * x.len + 1);
 	if (!x.split[x.op])
 		x.indic = 42;
 	else
-	{
-		x.split[x.op][x.len] = '/';
-		x.split[x.op][x.len + 1] = '\0';
-	}
+		x.split[x.op][x.len] = '\0';
 	return (x);
 }
 

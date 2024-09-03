@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/31 22:45:24 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:59:36 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -61,6 +61,7 @@ char	*fpath(char **env, char *cmd)
 	i = -1;
 	while (str[++i])
 		str[i] = tjoin(str[i], cmd);
+	str[0] = first_path(str[0]);
 	i = -1;
 	while (str[++i])
 	{
@@ -77,21 +78,23 @@ void	fsplit(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
+	i = -1;
+	while (str[++i])
 		free(str[i]);
-		i++;
-	}
 	free(str);
 }
 
+
+
+//////////////	gerer les arguments de commandes avec split
+//////////////	ls -l
 char	**prep_arg(char *str)
 {
 	char	**arg;
 	int		i;
 
 	i = tstrlen(str) + 1;
+
 	arg = malloc(sizeof(char *) * 2);
 	if (!arg)
 		return (NULL);

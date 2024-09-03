@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/08/31 22:48:37 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:04:42 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 typedef struct ppx
 {
 	struct var	*data;
+	char		**env;
 	char		*path;
 }			t_ppx;
 
 typedef struct var
 {
-	char		*cmd1;
-	char		*cmd2;
+	char		**cmd1;
+	char		**cmd2;
 	char		*in;
 	char		*out;
 }			t_data;
