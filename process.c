@@ -41,12 +41,9 @@ void	wegotasplituation(struct spt x)
 {
 	int	i;
 
-	i = 0;
-	while (x.split[i] && i <= x.op)
-	{
+	i = -1;
+	while (x.split[++i] && i <= x.op)
 		free(x.split[i]);
-		i++;
-	}
 	free(x.split);
 }
 
@@ -55,7 +52,7 @@ void	freeve(struct ppx *ppx)
 	fsplit(ppx->cmd1);
 	fsplit(ppx->cmd2);
 	free(ppx->fd);
-	wgas("");
+	exit(EXIT_SUCCESS);
 }
 
 void	fsplit(char **str)

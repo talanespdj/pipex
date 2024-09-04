@@ -5,3 +5,6 @@ https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 	        if (access(cmd, X_OK))
         		return (cmd);
 
+[ ] = creer outfile s'il n'existe pas et gérer le fail
+
+		open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
