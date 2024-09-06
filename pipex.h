@@ -23,7 +23,8 @@
 typedef struct ppx
 {
 	int			fd[2];
-	pid_t		pid;
+	pid_t		pid1;
+	pid_t		pid2;
 	char		**env;
 	char		*path;
 	char		**cmd1;
@@ -44,7 +45,7 @@ typedef struct spt
 	int			i;
 }			t_split;
 
-void			pipex(struct ppx *ppx, char **argv, char **env);
+void			pipex(struct ppx *ppx, char **argv, char *const*env);
 
 void			everinit(struct ppx *ppx, char **argv, char **env);
 void			wgas(char *str);

@@ -43,7 +43,6 @@ void	freeve(struct ppx *ppx)
 {
 	fsplit(ppx->cmd1);
 	fsplit(ppx->cmd2);
-	free(ppx->fd);
 	exit(0);
 }
 

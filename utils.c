@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/06 02:02:46 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/06 18:56:17 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -50,16 +50,15 @@ char	*fpath(char **env, char *cmd, int i)
 			&& env[i][2] == 'T' && env[i][3] == 'H' && env[i][4] == '=')
 			break ;
 	str = split(env[i], ':');
+	if (!str)
+		return (0);
 	str[0] = first_path(str[0]);
 	i = -1;
 	while (str[++i])
-	{
-		str[i] = tjoin(str[i], "/");
-		str[i] = tjoin(str[i], cmd);
-	}
+		str[i] = tjoin(tjoin(str[i], "/"), cmd);
 	i = -1;
 	while (str[++i])
-		if (access(str[i], F_OK) && access(str[i], X_OK))
+		if (!access(str[i], F_OK | X_OK))
 			break ;
 	if (str[i])
 		path = ft_strdup(str[i]);
@@ -110,6 +109,7 @@ char	*first_path(char *str)
 		i++;
 		r++;
 	}
+	free(str);
 	path[r] = '\0';
 	return (path);
 }
