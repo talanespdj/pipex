@@ -8,3 +8,7 @@ https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 [ ] = gerer la redirection de l'ecriture de la premiere commande vers la lecture de la deuxieme
 	avec le pipe qui cree un tab de fd et dup2 qui duplique de fd de l'ecriture et de la lecture
 	fork pour creer un process
+
+[ ] = réussir à executer une commande ??? pourquoi ça marche plus pitié
+	vérifier les chemins que je test dans fpath + check les man des foncions
+			pipe // fork // execve // dup2 // waitpid
