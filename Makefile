@@ -2,11 +2,11 @@ NAME = pipex
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -O3 -g3
 
-SRC = exec.c \
+SRC = pipex.c \
 	split.c \
 	utils.c \
-	pipex.c \
 	process.c \
+	execute.c \
 
 OBJS = $(SRC:.c=.o)
 

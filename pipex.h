@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 22:25:30 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/06 02:13:44 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -22,7 +22,8 @@
 
 typedef struct ppx
 {
-	int			*fd;
+	int			fd[2];
+	pid_t		pid;
 	char		**env;
 	char		*path;
 	char		**cmd1;
@@ -43,7 +44,7 @@ typedef struct spt
 	int			i;
 }			t_split;
 
-int				pipex(struct ppx *ppx, char **argv, char **env);
+void			pipex(struct ppx *ppx, char **argv, char **env);
 
 void			everinit(struct ppx *ppx, char **argv, char **env);
 void			wgas(char *str);
@@ -53,9 +54,14 @@ void			wegotasplituation(struct spt x);
 
 int				tstrlen(char *str);
 char			*ft_strdup(char *src);
-char			*fpath(char **env, char *cmd);
+char			*fpath(char **env, char *cmd, int i);
 char			*tjoin(char *str, char *add);
 
 char			**split(char const *str, char c);
+
+char			*first_path(char *str);
+
+void			exe(struct ppx *ppx);
+void			cute(struct ppx *ppx);
 
 #endif

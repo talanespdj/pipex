@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 19:43:25 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/06 02:02:46 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -39,32 +39,28 @@ int	tstrlen(char *str)
 	return (i);
 }
 
-char	*fpath(char **env, char *cmd)
+char	*fpath(char **env, char *cmd, int i)
 {
 	char	**str;
 	char	*path;
-	int		i;
 
-	i = 0;
 	path = NULL;
-	(void)cmd;
-	while (env[i])
-	{
+	while (env[++i])
 		if (env[i][4] && env[i][0] == 'P' && env[i][1] == 'A'
 			&& env[i][2] == 'T' && env[i][3] == 'H' && env[i][4] == '=')
 			break ;
-		i++;
-	}
-	str = split(*env + 5, ':');
-	i = -1;
-	while (str[++i])
-		str[i] = tjoin(str[i], cmd);
+	str = split(env[i], ':');
+	str[0] = first_path(str[0]);
 	i = -1;
 	while (str[++i])
 	{
+		str[i] = tjoin(str[i], "/");
+		str[i] = tjoin(str[i], cmd);
+	}
+	i = -1;
+	while (str[++i])
 		if (access(str[i], F_OK) && access(str[i], X_OK))
 			break ;
-	}
 	if (str[i])
 		path = ft_strdup(str[i]);
 	fsplit(str);
@@ -95,4 +91,25 @@ char	*tjoin(char *str, char *add)
 	tzy[i + t] = '\0';
 	free(str);
 	return (tzy);
+}
+
+char	*first_path(char *str)
+{
+	char	*path;
+	int		i;
+	int		r;
+
+	r = 0;
+	i = 5;
+	path = malloc(sizeof(char) * tstrlen(str) - 4);
+	if (!path)
+		return (NULL);
+	while (str[i])
+	{
+		path[r] = str[i];
+		i++;
+		r++;
+	}
+	path[r] = '\0';
+	return (path);
 }

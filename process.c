@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/03 22:27:17 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/05 21:07:24 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -19,31 +19,23 @@ void	everinit(struct ppx *ppx, char **argv, char **env)
 	if (fd <= 0)
 		wgas("infile not valid / fd <= 0");
 	close(fd);
-	fd = open(argv[4], O_RDONLY);
-	if (fd <= 0)
-		wgas("outfile not valid / fd <= 0");
-	close(fd);
 	ppx->in = argv[1];
 	ppx->cmd1 = split(argv[2], ' ');
 	ppx->cmd2 = split(argv[3], ' ');
 	ppx->out = argv[4];
 	ppx->env = env;
-	ppx->fd = (int *)malloc(sizeof(int) * 2);
-	if (!ppx->fd)
-	{
-		fsplit(ppx->cmd1);
-		fsplit(ppx->cmd2);
-		wgas("process.c // ppx->fd fail\n");
-	}
 }
 
 void	wegotasplituation(struct spt x)
 {
 	int	i;
 
-	i = -1;
-	while (x.split[++i] && i <= x.op)
+	i = 0;
+	while (x.split[i] && i <= x.op)
+	{
 		free(x.split[i]);
+		i++;
+	}
 	free(x.split);
 }
 
@@ -52,7 +44,7 @@ void	freeve(struct ppx *ppx)
 	fsplit(ppx->cmd1);
 	fsplit(ppx->cmd2);
 	free(ppx->fd);
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 void	fsplit(char **str)
@@ -68,5 +60,5 @@ void	fsplit(char **str)
 void	wgas(char *str)
 {
 	perror(str);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
