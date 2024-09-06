@@ -44,6 +44,8 @@ char	*fpath(char **env, char *cmd, int i)
 	char	**str;
 	char	*path;
 
+	if (!access(cmd, F_OK | X_OK))
+        	return (cmd);
 	path = NULL;
 	while (env[++i])
 		if (env[i][4] && env[i][0] == 'P' && env[i][1] == 'A'
