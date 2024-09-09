@@ -6,25 +6,13 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/05 21:07:24 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:11:07 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-// static void	putstr(char *str)
-// {
-// 	while (*str)
-// 		write(1 , str++, 1);
-// }
-
 void	everinit(struct ppx *ppx, char **argv, char **env)
 {
-	int	fd;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd <= 0)
-		wgas("infile invalid // does not exist");
-	close(fd);
 	ppx->in = argv[1];
 	ppx->cmd1 = split(argv[2], ' ');
 	ppx->cmd2 = split(argv[3], ' ');
