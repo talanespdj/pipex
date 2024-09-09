@@ -11,13 +11,19 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
+// static void	putstr(char *str)
+// {
+// 	while (*str)
+// 		write(1 , str++, 1);
+// }
+
 void	everinit(struct ppx *ppx, char **argv, char **env)
 {
 	int	fd;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
-		wgas("infile not valid / fd <= 0");
+		wgas("infile invalid // does not exist");
 	close(fd);
 	ppx->in = argv[1];
 	ppx->cmd1 = split(argv[2], ' ');

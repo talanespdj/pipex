@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/06 18:56:17 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/09 20:00:26 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -45,7 +45,7 @@ char	*fpath(char **env, char *cmd, int i)
 	char	*path;
 
 	if (!access(cmd, F_OK | X_OK))
-        	return (cmd);
+		return (cmd);
 	path = NULL;
 	while (env[++i])
 		if (env[i][4] && env[i][0] == 'P' && env[i][1] == 'A'

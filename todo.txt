@@ -5,6 +5,7 @@ https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 	        if (access(cmd, X_OK))
         		return (cmd);
 
+
 [✅] = gerer la redirection de l'ecriture de la premiere commande vers la lecture de la deuxieme
 	avec le pipe qui cree un tab de fd et dup2 qui duplique de fd de l'ecriture et de la lecture
 	fork pour creer un process
@@ -14,3 +15,5 @@ https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 			pipe // fork // execve // dup2 // waitpid
 
 
+////// il ne faut pas free path ??? alors que j4'envoie un strdup dedans ??
+////// en tout cas ya invalid free quand je decommente, va falloir tirer tout ca au clair
