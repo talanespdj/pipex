@@ -17,12 +17,10 @@ static void	putstr(char *str)
 		write(1, str++, 1);
 }
 
-static	void	f_exec(struct ppx *ppx, char *path)
+static	void	f_exec(struct ppx *ppx)
 {
 	fsplit(ppx->cmd1);
 	fsplit(ppx->cmd2);
-	(void)path;
-	//free(path);
 	exit(22);
 }
 
@@ -44,13 +42,9 @@ void	exe(struct ppx *ppx)
 	close(ppx->fd[0]);
 	path = fpath(ppx->env, ppx->cmd1[0], -1);
 	if (!path)
-	{
-		fsplit(ppx->cmd1);
-		fsplit(ppx->cmd2);
-		exit(42);
-	}
+		f_exec(ppx);
 	if (execve(path, ppx->cmd1, ppx->env) == -1)
-		f_exec(ppx, path);
+		f_exec(ppx);
 }
 
 void	cute(struct ppx *ppx)
@@ -70,11 +64,7 @@ void	cute(struct ppx *ppx)
 	close(ppx->fd[1]);
 	path = fpath(ppx->env, ppx->cmd2[0], -1);
 	if (!path)
-	{
-		fsplit(ppx->cmd1);
-		fsplit(ppx->cmd2);
-		exit(84);
-	}
+		f_exec(ppx);
 	if (execve(path, ppx->cmd2, ppx->env) == -1)
-		f_exec(ppx, path);
+		f_exec(ppx);
 }
