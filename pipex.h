@@ -24,7 +24,6 @@ typedef struct ppx
 {
 	int			fd[2];
 	pid_t		pid1;
-	pid_t		pid2;
 	char		**env;
 	char		*path;
 	char		**cmd1;

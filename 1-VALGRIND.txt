@@ -1,0 +1,92 @@
+v ./pipex infile "ls -l" a  outfile
+c'est clean
+c'est fclean
+pipex ready
+==2371732== Memcheck, a memory error detector
+==2371732== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2371732== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==2371732== Command: ./pipex infile ls\ -l a outfile
+==2371732== 
+Command not found !
+No such file or directory
+==2371734== 
+==2371734== FILE DESCRIPTORS: 3 open (3 std) at exit.
+==2371734== 
+==2371734== HEAP SUMMARY:
+==2371734==     in use at exit: 0 bytes in 0 blocks
+==2371734==   total heap usage: 37 allocs, 37 frees, 544 bytes allocated
+==2371734== 
+==2371734== All heap blocks were freed -- no leaks are possible
+==2371734== 
+==2371734== For lists of detected and suppressed errors, rerun with: -s
+==2371734== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2371733== 
+==2371733== FILE DESCRIPTORS: 5 open (3 std) at exit.
+==2371733== Open file descriptor 4:
+==2371733==    at 0x498907D: pipe (pipe.c:29)
+==2371733==    by 0x401200: pipex (pipex.c:17)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== Open file descriptor 3:
+==2371733==    at 0x498907D: pipe (pipe.c:29)
+==2371733==    by 0x401200: pipex (pipex.c:17)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== 
+==2371733== HEAP SUMMARY:
+==2371733==     in use at exit: 48 bytes in 5 blocks
+==2371733==   total heap usage: 7 allocs, 2 frees, 1,544 bytes allocated
+==2371733== 
+==2371733== 2 bytes in 1 blocks are still reachable in loss record 1 of 4
+==2371733==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2371733==    by 0x4015A0: space_alloc (split.c:68)
+==2371733==    by 0x4015A0: fill_split (split.c:86)
+==2371733==    by 0x4015A0: split (split.c:115)
+==2371733==    by 0x401CB5: everinit (process.c:18)
+==2371733==    by 0x4011F8: pipex (pipex.c:16)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== 6 bytes in 2 blocks are still reachable in loss record 2 of 4
+==2371733==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2371733==    by 0x4015A0: space_alloc (split.c:68)
+==2371733==    by 0x4015A0: fill_split (split.c:86)
+==2371733==    by 0x4015A0: split (split.c:115)
+==2371733==    by 0x401CA3: everinit (process.c:17)
+==2371733==    by 0x4011F8: pipex (pipex.c:16)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== 16 bytes in 1 blocks are still reachable in loss record 3 of 4
+==2371733==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2371733==    by 0x4013B3: split (split.c:112)
+==2371733==    by 0x401CB5: everinit (process.c:18)
+==2371733==    by 0x4011F8: pipex (pipex.c:16)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== 24 bytes in 1 blocks are still reachable in loss record 4 of 4
+==2371733==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2371733==    by 0x4013B3: split (split.c:112)
+==2371733==    by 0x401CA3: everinit (process.c:17)
+==2371733==    by 0x4011F8: pipex (pipex.c:16)
+==2371733==    by 0x4012C4: main (pipex.c:43)
+==2371733== 
+==2371733== LEAK SUMMARY:
+==2371733==    definitely lost: 0 bytes in 0 blocks
+==2371733==    indirectly lost: 0 bytes in 0 blocks
+==2371733==      possibly lost: 0 bytes in 0 blocks
+==2371733==    still reachable: 48 bytes in 5 blocks
+==2371733==         suppressed: 0 bytes in 0 blocks
+==2371733== 
+==2371733== For lists of detected and suppressed errors, rerun with: -s
+==2371733== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2371732== 
+==2371732== FILE DESCRIPTORS: 3 open (3 std) at exit.
+==2371732== 
+==2371732== HEAP SUMMARY:
+==2371732==     in use at exit: 0 bytes in 0 blocks
+==2371732==   total heap usage: 5 allocs, 5 frees, 48 bytes allocated
+==2371732== 
+==2371732== All heap blocks were freed -- no leaks are possible
+==2371732== 
+==2371732== For lists of detected and suppressed errors, rerun with: -s
+==2371732== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+

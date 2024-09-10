@@ -21,23 +21,23 @@ void	pipex(struct ppx *ppx, char **argv, char *const *env)
 		wgas("");
 	if (ppx->pid1 == 0)
 		exe(ppx);
-	ppx->pid2 = fork();
-	if (ppx->pid2 == -1)
+	ppx->pid1 = fork();
+	if (ppx->pid1 == -1)
 		wgas("");
-	if (ppx->pid2 == 0)
+	if (ppx->pid1 == 0)
 		cute(ppx);
 	close(ppx->fd[0]);
 	close(ppx->fd[1]);
 	waitpid(ppx->pid1, NULL, 0);
-	waitpid(ppx->pid2, NULL, 0);
+	waitpid(ppx->pid1, NULL, 0);
 }
 
 int	main(int argc, char **argv, char *const *envp)
 {
 	struct ppx	ppx;
 
-	if (argc != 5 || !envp[0])
-		wgas("not enough args || invalid env");
+	if (argc != 5)
+		wgas("not enough args");
 	else
 	{
 		pipex(&ppx, argv, envp);
