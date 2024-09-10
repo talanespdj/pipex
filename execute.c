@@ -6,16 +6,10 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:45:03 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/09 19:59:23 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:02:35 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
-
-// static void	putstr(char *str)
-// {
-// 	while (*str)
-// 		write(1, str++, 1);
-// }
 
 static	void	f_exec(struct ppx *ppx)
 {
@@ -30,17 +24,17 @@ void	exe(struct ppx *ppx)
 	int		tfd;
 	char	*path;
 
-	tfd = open(ppx->in, O_RDONLY, 0777);
+	tfd = 1;
 	if (tfd == -1)
 	{
 		perror("");
 		exit(0);
 	}
 	if (dup2(tfd, STDIN_FILENO) == -1)
-		wgas("dup2 ");
+		wgas("");
 	close(tfd);
 	if (dup2(ppx->fd[1], STDOUT_FILENO) == -1)
-		wgas("dup2");
+		wgas("");
 	close(ppx->fd[1]);
 	close(ppx->fd[0]);
 	path = fpath(ppx->env, ppx->cmd1[0], -1);
@@ -59,9 +53,9 @@ void	cute(struct ppx *ppx)
 	if (tfd == -1)
 		return (perror(""));
 	if (dup2(ppx->fd[0], STDIN_FILENO) == -1)
-		wgas("l.59");
+		wgas("");
 	if (dup2(tfd, STDOUT_FILENO) == -1)
-		wgas("l.61");
+		wgas("");
 	close(tfd);
 	close(ppx->fd[0]);
 	close(ppx->fd[1]);
