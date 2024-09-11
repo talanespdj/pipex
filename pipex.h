@@ -24,6 +24,7 @@ typedef struct ppx
 {
 	int			fd[2];
 	pid_t		pid1;
+	pid_t		pid2;
 	char		**env;
 	char		*path;
 	char		**cmd1;
@@ -46,10 +47,12 @@ typedef struct spt
 
 void			pipex(struct ppx *ppx, char **argv, char *const*env);
 
+void			f_exec(struct ppx *ppx, int d);
+void			putstr(char *str);
+
 void			everinit(struct ppx *ppx, char **argv, char **env);
 void			wgas(char *str);
 void			fsplit(char **str);
-void			freeve(struct ppx *ppx);
 void			wegotasplituation(struct spt x);
 
 int				tstrlen(char *str);

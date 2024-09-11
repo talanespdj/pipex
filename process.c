@@ -20,6 +20,11 @@ void	everinit(struct ppx *ppx, char **argv, char **env)
 	ppx->env = env;
 }
 
+void	wgas(char *str)
+{
+	perror(str);
+	exit(EXIT_FAILURE);
+}
 void	wegotasplituation(struct spt x)
 {
 	int	i;
@@ -33,13 +38,6 @@ void	wegotasplituation(struct spt x)
 	free(x.split);
 }
 
-void	freeve(struct ppx *ppx)
-{
-	fsplit(ppx->cmd1);
-	fsplit(ppx->cmd2);
-	exit(0);
-}
-
 void	fsplit(char **str)
 {
 	int	i;
@@ -50,8 +48,3 @@ void	fsplit(char **str)
 	free(str);
 }
 
-void	wgas(char *str)
-{
-	perror(str);
-	exit(EXIT_FAILURE);
-}
