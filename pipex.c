@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:26:38 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/11 20:57:54 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/11 21:47:34 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -43,11 +43,7 @@ int	main(int argc, char **argv, char *const *envp)
 	struct ppx	ppx;
 
 	if (argc != 5)
-	{
-//		putstr("need ./pipex + 4 args\n");
-//		exit(EXIT_FAILURE);
-		wgas("need ./pipex + 4 args\n");
-	}
+		putstr("need ./pipex + 4 args\n");
 	else
 	{
 		pipex(&ppx, argv, envp);
