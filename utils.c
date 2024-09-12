@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 21:59:04 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/11 23:19:20 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:03:38 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -57,10 +57,7 @@ char	*fpath(char **env, char *cmd, int i)
 	str[0] = first_path(str[0]);
 	i = -1;
 	while (str[++i])
-	{
 		str[i] = tjoin(tjoin(str[i], "/"), cmd);
-//		printf("[%d]\t%s\n", i, str[i]);
-	}
 	i = -1;
 	while (str[++i])
 		if (!access(str[i], F_OK | X_OK))

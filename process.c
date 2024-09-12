@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/09 21:11:07 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:03:51 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -25,6 +25,7 @@ void	wgas(char *str)
 	perror(str);
 	exit(EXIT_FAILURE);
 }
+
 void	wegotasplituation(struct spt x)
 {
 	int	i;

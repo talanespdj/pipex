@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:45:03 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/11 21:56:31 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:03:24 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -27,7 +27,7 @@ void	exe(struct ppx *ppx)
 	int		tfd;
 	char	*path;
 
-	if (ppx->cmd1[0] == NULL || ppx->cmd1[1] != NULL)
+	if (ppx->cmd1[0] == NULL)
 		f_exec(ppx, 1);
 	tfd = open(ppx->in, O_RDONLY);
 	if (tfd == -1)
@@ -54,7 +54,7 @@ void	cute(struct ppx *ppx)
 	int		tfd;
 	char	*path;
 
-	if (ppx->cmd2[0] == NULL || ppx->cmd2[1] != NULL)
+	if (ppx->cmd2[0] == NULL)
 		f_exec(ppx, 1);
 	tfd = open(ppx->out, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (tfd == -1)
