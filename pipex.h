@@ -60,6 +60,7 @@ char			*first_path(char *str);
 
 char			**split(char const *str, char c);
 
+void			putstrfd(char *str, int fd);
 void			exe(struct ppx *ppx);
 void			cute(struct ppx *ppx);
 

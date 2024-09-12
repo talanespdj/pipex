@@ -11,12 +11,6 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
-static void	putstr(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
 void	pipex(struct ppx *ppx, char **argv, char *const *env)
 {
 	everinit(ppx, argv, (char **)env);
@@ -43,7 +37,7 @@ int	main(int argc, char **argv, char *const *envp)
 	struct ppx	ppx;
 
 	if (argc != 5)
-		putstr("need ./pipex + 4 args\n");
+		putstrfd("need ./pipex + 4 args\n", 2);
 	else
 	{
 		pipex(&ppx, argv, envp);

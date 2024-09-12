@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
-static	void	putstrfd(char *str, int fd)
+void	putstrfd(char *str, int fd)
 {
 	while (*str)
 		write(fd, str++, 1);
