@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
+int	tstrlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 char	*ft_strdup(char *src)
 {
 	int		i;
@@ -27,16 +37,6 @@ char	*ft_strdup(char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int	tstrlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 char	*fpath(char **env, char *cmd, int i)

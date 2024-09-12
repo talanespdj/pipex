@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:42:10 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/12 16:03:51 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:20:24 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -26,6 +26,16 @@ void	wgas(char *str)
 	exit(EXIT_FAILURE);
 }
 
+void	fsplit(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
+
 void	wegotasplituation(struct spt x)
 {
 	int	i;
@@ -38,14 +48,3 @@ void	wegotasplituation(struct spt x)
 	}
 	free(x.split);
 }
-
-void	fsplit(char **str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str);
-}
-

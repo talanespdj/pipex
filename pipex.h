@@ -6,7 +6,7 @@
 /*   By: tespandj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:31:44 by tespandj          #+#    #+#             */
-/*   Updated: 2024/09/06 02:13:44 by tespandj         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:20:53 by tespandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -47,9 +47,6 @@ typedef struct spt
 
 void			pipex(struct ppx *ppx, char **argv, char *const*env);
 
-void			f_exec(struct ppx *ppx, int d);
-void			putstr(char *str);
-
 void			everinit(struct ppx *ppx, char **argv, char **env);
 void			wgas(char *str);
 void			fsplit(char **str);
@@ -59,10 +56,9 @@ int				tstrlen(char *str);
 char			*ft_strdup(char *src);
 char			*fpath(char **env, char *cmd, int i);
 char			*tjoin(char *str, char *add);
+char			*first_path(char *str);
 
 char			**split(char const *str, char c);
-
-char			*first_path(char *str);
 
 void			exe(struct ppx *ppx);
 void			cute(struct ppx *ppx);
